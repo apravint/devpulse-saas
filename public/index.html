@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevPulse AI SaaS — Autonomous Code Security & Quality Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Animated Blobs -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="#" class="brand">
+      <div class="brand-icon">⚡</div>
+      <span>DevPulse AI</span>
+    </a>
+    <div class="nav-links">
+      <a href="#playground" class="nav-item">Playground</a>
+      <a href="#dashboard" class="nav-item">Dashboard</a>
+      <a href="#pricing" class="nav-item">Pricing</a>
+      <span class="badge-pill" style="margin: 0;" id="user-plan-badge">Pro Tier</span>
+      <button class="btn-primary" onclick="openCheckoutModal('Enterprise Tier ($49/mo)')">Upgrade Plan</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="badge-pill">🚀 Autonomous AI Vulnerability Scanner & PR Bot</div>
+    <h1 class="hero-title">Continuous Code Security & Quality AI Agent</h1>
+    <p class="hero-subtitle">
+      Automate repository security scanning, detect zero-day vulnerabilities, and merge AI auto-fixes on every pull request.
+    </p>
+  </section>
+
+  <div class="container">
+
+    <!-- Interactive Playground -->
+    <section id="playground" class="glass-card">
+      <div class="playground-header">
+        <div>
+          <h2 style="font-size: 1.5rem; color: #fff;">⚡ Instant AI Code Security Audit</h2>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Paste python/JS code or API handlers to scan for hardcoded secrets, injection, and security flaws.</p>
+        </div>
+        <button class="btn-primary" id="btn-scan">⚡ Run Instant AI Audit</button>
+      </div>
+
+      <textarea class="editor-textarea" id="code-input" spellcheck="false"># Example Code to Audit
+import os
+import subprocess
+
+API_KEY = "sk_live_9f8a32b104ce89a2"  # Secret leak!
+
+def run_command(user_input):
+    # Dynamic exec & process injection risk
+    eval(user_input)
+    subprocess.run("ls " + user_input, shell=True)
+</textarea>
+
+      <!-- Results Container -->
+      <div id="audit-results" class="audit-results" style="display: none;"></div>
+    </section>
+
+    <!-- SaaS Dashboard Section -->
+    <section id="dashboard" class="glass-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div>
+          <h2 style="font-size: 1.5rem; color: #fff;">📁 Monitored Repositories & PR Bot Status</h2>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Autonomous GitHub PR reviewer bots active on 3 repositories.</p>
+        </div>
+        <button class="btn-outline" onclick="fetchRepos()">🔄 Refresh Status</button>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Repository</th>
+            <th>Health Score</th>
+            <th>Open Findings</th>
+            <th>Last Scanned</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="repo-table-body">
+          <!-- Dynamically populated -->
+        </tbody>
+      </table>
+
+      <!-- API Key Access Panel -->
+      <div style="margin-top: 2rem; padding: 1.25rem; background: rgba(0, 0, 0, 0.4); border-radius: 8px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <strong style="color: #fff;">Your Live DevPulse API Key</strong>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Use this API Key to authenticate CI/CD GitHub Actions pipelines.</p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <input type="text" id="user-api-key" readonly style="background: #090d16; border: 1px solid var(--border-card); color: var(--accent-cyan); padding: 0.5rem 1rem; border-radius: 6px; font-family: monospace;" value="dp_live_loading...">
+          <button class="btn-outline" onclick="navigator.clipboard.writeText(document.getElementById('user-api-key').value); alert('API Key copied to clipboard!');">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" style="text-align: center; margin-top: 4rem;">
+      <h2 style="font-size: 2.2rem; color: #fff; margin-bottom: 0.5rem;">Flexible SaaS Subscriptions</h2>
+      <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem;">Upgrade your plan to unlock unlimited repository audits, custom security rules, and automated PR fix bots.</p>
+
+      <div class="pricing-grid">
+        <!-- Hobby -->
+        <div class="glass-card price-card">
+          <h3 style="color: #fff;">Hobby Developer</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">For open-source builders</p>
+          <div class="price-val">$0 <span style="font-size: 1rem; color: var(--text-muted);">/mo</span></div>
+          <ul style="text-align: left; list-style: none; margin-bottom: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+            <li style="margin-bottom: 0.5rem;">✔ 3 Repositories</li>
+            <li style="margin-bottom: 0.5rem;">✔ Standard Heuristic Scan</li>
+            <li style="margin-bottom: 0.5rem;">✔ Community Support</li>
+          </ul>
+          <button class="btn-outline" style="width: 100%;" onclick="openCheckoutModal('Hobby Free Plan')">Current Plan</button>
+        </div>
+
+        <!-- Pro -->
+        <div class="glass-card price-card popular">
+          <div class="badge-pill" style="position: absolute; top: -14px; right: 20px;">MOST POPULAR</div>
+          <h3 style="color: #fff;">Developer Pro</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">For active developers & teams</p>
+          <div class="price-val" style="color: var(--accent-cyan);">$19 <span style="font-size: 1rem; color: var(--text-muted);">/mo</span></div>
+          <ul style="text-align: left; list-style: none; margin-bottom: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+            <li style="margin-bottom: 0.5rem;">✔ Unlimited Repositories</li>
+            <li style="margin-bottom: 0.5rem;">✔ Autonomous GitHub PR Bot</li>
+            <li style="margin-bottom: 0.5rem;">✔ Local Ollama & Gemini LLM Bridge</li>
+            <li style="margin-bottom: 0.5rem;">✔ Slack & Discord Vulnerability Alerts</li>
+          </ul>
+          <button class="btn-primary" style="width: 100%;" onclick="openCheckoutModal('Developer Pro ($19/mo)')">Upgrade to Pro</button>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="glass-card price-card">
+          <h3 style="color: #fff;">Team / Enterprise</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">For high-scale software teams</p>
+          <div class="price-val">$49 <span style="font-size: 1rem; color: var(--text-muted);">/mo</span></div>
+          <ul style="text-align: left; list-style: none; margin-bottom: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+            <li style="margin-bottom: 0.5rem;">✔ Everything in Pro</li>
+            <li style="margin-bottom: 0.5rem;">✔ Unlimited Team Seats</li>
+            <li style="margin-bottom: 0.5rem;">✔ Custom Security Rules Engine</li>
+            <li style="margin-bottom: 0.5rem;">✔ SOC2 Compliance Exporter</li>
+          </ul>
+          <button class="btn-outline" style="width: 100%;" onclick="openCheckoutModal('Enterprise Tier ($49/mo)')">Get Enterprise</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Subscription Modal -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="glass-card modal-card">
+      <h3 style="color: #fff; margin-bottom: 0.5rem;">Confirm SaaS Subscription</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">
+        You are subscribing to <strong style="color: var(--accent-cyan);" id="modal-plan-name">Developer Pro ($19/mo)</strong>. Instant API activation & GitHub webhook listener provisioning.
+      </p>
+      
+      <div style="margin-bottom: 1.5rem; text-align: left;">
+        <label style="color: var(--text-muted); font-size: 0.85rem; display: block; margin-bottom: 0.4rem;">Payment Method</label>
+        <div style="background: #090d16; border: 1px solid var(--border-card); padding: 0.8rem; border-radius: 6px; color: #fff; font-size: 0.9rem;">
+          💳 Simulated Stripe Credit Card (**** 4242)
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+        <button class="btn-outline" onclick="closeModal()">Cancel</button>
+        <button class="btn-primary" onclick="confirmSubscription()">Confirm & Activate Plan</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
