@@ -90,6 +90,16 @@ def perform_ai_audit(code_snippet: str):
 def index():
     return send_from_directory("public", "index.html")
 
+@app.route("/api/health", methods=["GET"])
+def health_check():
+    return jsonify({
+        "status": "UP",
+        "service": "DevPulse AI SaaS Platform API",
+        "uptime": "Active",
+        "version": "1.0.0",
+        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S UTC")
+    })
+
 @app.route("/api/scan", methods=["POST"])
 def api_scan():
     data = request.json or {}
